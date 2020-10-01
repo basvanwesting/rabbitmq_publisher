@@ -1,0 +1,249 @@
+15:54:12.705 [info]  handle_demand(1, :ok) called
+
+15:54:12.723 [error] GenServer RabbitmqPublisher.Consumer terminating
+** (stop) {:connection_lost, {:shutdown, {:server_initiated_close, 403, "ACCESS_REFUSED - access to exchange 'broadway_tutorial_exchange' in vhost '/' refused for user 'client'"}}}
+Last message: {:DOWN, #Reference<0.189783775.1093664769.204822>, :process, #PID<0.333.0>, {:shutdown, {:server_initiated_close, 403, "ACCESS_REFUSED - access to exchange 'broadway_tutorial_exchange' in vhost '/' refused for user 'client'"}}}
+State: nil
+
+15:54:12.724 [info]  [supervisor: {#PID<0.338.0>, :amqp_channel_sup}, started: [pid: #PID<0.339.0>, name: :gen_consumer, mfargs: {:amqp_gen_consumer, :start_link, [:amqp_selective_consumer, [], {"client 192.168.0.133:52265 -> 192.168.0.139:5672", 1}]}, restart_type: :intrinsic, shutdown: 30000, child_type: :worker]]
+
+15:54:12.724 [info]  [supervisor: {#PID<0.338.0>, :amqp_channel_sup}, started: [pid: #PID<0.340.0>, name: :channel, mfargs: {:amqp_channel, :start_link, [:network, #PID<0.322.0>, 1, #PID<0.339.0>, {"client 192.168.0.133:52265 -> 192.168.0.139:5672", 1}]}, restart_type: :intrinsic, shutdown: 30000, child_type: :worker]]
+
+15:54:12.724 [info]  [supervisor: {#PID<0.338.0>, :amqp_channel_sup}, started: [pid: #PID<0.341.0>, name: :writer, mfargs: {:rabbit_writer, :start_link, [#Port<0.9>, 1, 131072, :rabbit_framing_amqp_0_9_1, #PID<0.340.0>, {"client 192.168.0.133:52265 -> 192.168.0.139:5672", 1}, false, 1000000000]}, restart_type: :transient, shutdown: 30000, child_type: :worker]]
+
+15:54:12.741 [error] GenServer RabbitmqPublisher.Consumer terminating
+** (stop) exited in: :gen_server.call(#PID<0.340.0>, {:call, {:"queue.declare", 0, "broadway_tutorial_error", false, true, false, false, false, []}, :none, #PID<0.337.0>}, 60000)
+    ** (EXIT) shutdown: {:server_initiated_close, 403, "ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'"}
+    (stdlib 3.13.1) gen_server.erl:246: :gen_server.call/3
+    (amqp 1.5.0) lib/amqp/queue.ex:45: AMQP.Queue.declare/3
+    (rabbitmq_publisher 0.1.0) lib/rabbitmq_publisher/consumer.ex:52: RabbitmqPublisher.Consumer.setup_queue/1
+    (rabbitmq_publisher 0.1.0) lib/rabbitmq_publisher/consumer.ex:25: RabbitmqPublisher.Consumer.handle_info/2
+    (gen_stage 1.0.0) lib/gen_stage.ex:2086: GenStage.noreply_callback/3
+    (stdlib 3.13.1) gen_server.erl:680: :gen_server.try_dispatch/4
+    (stdlib 3.13.1) gen_server.erl:756: :gen_server.handle_msg/6
+    (stdlib 3.13.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+Last message: :connect
+State: nil
+
+15:54:12.742 [info]  [supervisor: {#PID<0.343.0>, :amqp_channel_sup}, started: [pid: #PID<0.344.0>, name: :gen_consumer, mfargs: {:amqp_gen_consumer, :start_link, [:amqp_selective_consumer, [], {"client 192.168.0.133:52265 -> 192.168.0.139:5672", 1}]}, restart_type: :intrinsic, shutdown: 30000, child_type: :worker]]
+
+15:54:12.742 [info]  [supervisor: {#PID<0.343.0>, :amqp_channel_sup}, started: [pid: #PID<0.345.0>, name: :channel, mfargs: {:amqp_channel, :start_link, [:network, #PID<0.322.0>, 1, #PID<0.344.0>, {"client 192.168.0.133:52265 -> 192.168.0.139:5672", 1}]}, restart_type: :intrinsic, shutdown: 30000, child_type: :worker]]
+
+15:54:12.742 [info]  [supervisor: {#PID<0.343.0>, :amqp_channel_sup}, started: [pid: #PID<0.346.0>, name: :writer, mfargs: {:rabbit_writer, :start_link, [#Port<0.9>, 1, 131072, :rabbit_framing_amqp_0_9_1, #PID<0.345.0>, {"client 192.168.0.133:52265 -> 192.168.0.139:5672", 1}, false, 1000000000]}, restart_type: :transient, shutdown: 30000, child_type: :worker]]
+15:54:12.723 [error] gen_server 'Elixir.RabbitmqPublisher.Consumer' terminated with reason: {connection_lost,{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to exchange 'broadway_tutorial_exchange' in vhost '/' refused for user 'client'">>}}}
+
+15:54:12.755 [error] GenServer RabbitmqPublisher.Consumer terminating
+** (stop) exited in: :gen_server.call(#PID<0.345.0>, {:call, {:"queue.declare", 0, "broadway_tutorial_error", false, true, false, false, false, []}, :none, #PID<0.342.0>}, 60000)
+    ** (EXIT) shutdown: {:server_initiated_close, 403, "ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'"}
+    (stdlib 3.13.1) gen_server.erl:246: :gen_server.call/3
+    (amqp 1.5.0) lib/amqp/queue.ex:45: AMQP.Queue.declare/3
+    (rabbitmq_publisher 0.1.0) lib/rabbitmq_publisher/consumer.ex:52: RabbitmqPublisher.Consumer.setup_queue/1
+    (rabbitmq_publisher 0.1.0) lib/rabbitmq_publisher/consumer.ex:25: RabbitmqPublisher.Consumer.handle_info/2
+    (gen_stage 1.0.0) lib/gen_stage.ex:2086: GenStage.noreply_callback/3
+    (stdlib 3.13.1) gen_server.erl:680: :gen_server.try_dispatch/4
+    (stdlib 3.13.1) gen_server.erl:756: :gen_server.handle_msg/6
+    (stdlib 3.13.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+Last message: :connect
+State: nil
+
+15:54:12.755 [info]  [supervisor: {#PID<0.348.0>, :amqp_channel_sup}, started: [pid: #PID<0.349.0>, name: :gen_consumer, mfargs: {:amqp_gen_consumer, :start_link, [:amqp_selective_consumer, [], {"client 192.168.0.133:52265 -> 192.168.0.139:5672", 1}]}, restart_type: :intrinsic, shutdown: 30000, child_type: :worker]]
+
+15:54:12.755 [info]  [supervisor: {#PID<0.348.0>, :amqp_channel_sup}, started: [pid: #PID<0.350.0>, name: :channel, mfargs: {:amqp_channel, :start_link, [:network, #PID<0.322.0>, 1, #PID<0.349.0>, {"client 192.168.0.133:52265 -> 192.168.0.139:5672", 1}]}, restart_type: :intrinsic, shutdown: 30000, child_type: :worker]]
+
+15:54:12.756 [info]  [supervisor: {#PID<0.348.0>, :amqp_channel_sup}, started: [pid: #PID<0.351.0>, name: :writer, mfargs: {:rabbit_writer, :start_link, [#Port<0.9>, 1, 131072, :rabbit_framing_amqp_0_9_1, #PID<0.350.0>, {"client 192.168.0.133:52265 -> 192.168.0.139:5672", 1}, false, 1000000000]}, restart_type: :transient, shutdown: 30000, child_type: :worker]]
+
+15:54:12.769 [error] GenServer RabbitmqPublisher.Consumer terminating
+** (stop) exited in: :gen_server.call(#PID<0.350.0>, {:call, {:"queue.declare", 0, "broadway_tutorial_error", false, true, false, false, false, []}, :none, #PID<0.347.0>}, 60000)
+    ** (EXIT) shutdown: {:server_initiated_close, 403, "ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'"}
+    (stdlib 3.13.1) gen_server.erl:246: :gen_server.call/3
+    (amqp 1.5.0) lib/amqp/queue.ex:45: AMQP.Queue.declare/3
+    (rabbitmq_publisher 0.1.0) lib/rabbitmq_publisher/consumer.ex:52: RabbitmqPublisher.Consumer.setup_queue/1
+    (rabbitmq_publisher 0.1.0) lib/rabbitmq_publisher/consumer.ex:25: RabbitmqPublisher.Consumer.handle_info/2
+    (gen_stage 1.0.0) lib/gen_stage.ex:2086: GenStage.noreply_callback/3
+    (stdlib 3.13.1) gen_server.erl:680: :gen_server.try_dispatch/4
+    (stdlib 3.13.1) gen_server.erl:756: :gen_server.handle_msg/6
+    (stdlib 3.13.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+Last message: :connect
+State: nil
+
+15:54:12.770 [info]  Application rabbitmq_publisher exited: shutdown
+15:54:12.723 [error] CRASH REPORT Process 'Elixir.RabbitmqPublisher.Consumer' with 0 neighbours exited with reason: {connection_lost,{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to exchange 'broadway_tutorial_exchange' in vhost '/' refused for user 'client'">>}}} in gen_server:handle_common_reply/8 line 796
+15:54:12.724 [error] Supervisor 'Elixir.RabbitmqPublisher.Supervisor' had child 'Elixir.RabbitmqPublisher.Consumer' started with 'Elixir.RabbitmqPublisher.Consumer':start_link([]) at <0.287.0> exit with reason {connection_lost,{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to exchange 'broadway_tutorial_exchange' in vhost '/' refused for user 'client'">>}}} in context child_terminated
+15:54:12.741 [error] gen_server 'Elixir.RabbitmqPublisher.Consumer' terminated with reason: {{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'">>}},{gen_server,call,[<0.340.0>,{call,{'queue.declare',0,<<"broadway_tutorial_error">>,false,true,false,false,false,[]},none,<0.337.0>},60000]}} in gen_server:call/3 line 246
+15:54:12.741 [error] CRASH REPORT Process 'Elixir.RabbitmqPublisher.Consumer' with 0 neighbours exited with reason: {{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'">>}},{gen_server,call,[<0.340.0>,{call,{'queue.declare',0,<<"broadway_tutorial_error">>,false,true,false,false,false,[]},none,<0.337.0>},60000]}} in gen_server:call/3 line 246
+15:54:12.742 [error] Supervisor 'Elixir.RabbitmqPublisher.Supervisor' had child 'Elixir.RabbitmqPublisher.Consumer' started with 'Elixir.RabbitmqPublisher.Consumer':start_link([]) at <0.337.0> exit with reason {{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'">>}},{gen_server,call,[<0.340.0>,{call,{'queue.declare',0,<<"broadway_tutorial_error">>,false,true,false,false,false,[]},none,<0.337.0>},60000]}} in context child_terminated
+15:54:12.755 [error] gen_server 'Elixir.RabbitmqPublisher.Consumer' terminated with reason: {{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'">>}},{gen_server,call,[<0.345.0>,{call,{'queue.declare',0,<<"broadway_tutorial_error">>,false,true,false,false,false,[]},none,<0.342.0>},60000]}} in gen_server:call/3 line 246
+15:54:12.755 [error] CRASH REPORT Process 'Elixir.RabbitmqPublisher.Consumer' with 0 neighbours exited with reason: {{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'">>}},{gen_server,call,[<0.345.0>,{call,{'queue.declare',0,<<"broadway_tutorial_error">>,false,true,false,false,false,[]},none,<0.342.0>},60000]}} in gen_server:call/3 line 246
+15:54:12.756 [error] Supervisor 'Elixir.RabbitmqPublisher.Supervisor' had child 'Elixir.RabbitmqPublisher.Consumer' started with 'Elixir.RabbitmqPublisher.Consumer':start_link([]) at <0.342.0> exit with reason {{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'">>}},{gen_server,call,[<0.345.0>,{call,{'queue.declare',0,<<"broadway_tutorial_error">>,false,true,false,false,false,[]},none,<0.342.0>},60000]}} in context child_terminated
+15:54:12.769 [error] gen_server 'Elixir.RabbitmqPublisher.Consumer' terminated with reason: {{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'">>}},{gen_server,call,[<0.350.0>,{call,{'queue.declare',0,<<"broadway_tutorial_error">>,false,true,false,false,false,[]},none,<0.347.0>},60000]}} in gen_server:call/3 line 246
+15:54:12.769 [error] CRASH REPORT Process 'Elixir.RabbitmqPublisher.Consumer' with 0 neighbours exited with reason: {{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'">>}},{gen_server,call,[<0.350.0>,{call,{'queue.declare',0,<<"broadway_tutorial_error">>,false,true,false,false,false,[]},none,<0.347.0>},60000]}} in gen_server:call/3 line 246
+15:54:12.770 [error] Supervisor 'Elixir.RabbitmqPublisher.Supervisor' had child 'Elixir.RabbitmqPublisher.Consumer' started with 'Elixir.RabbitmqPublisher.Consumer':start_link([]) at <0.347.0> exit with reason {{shutdown,{server_initiated_close,403,<<"ACCESS_REFUSED - access to queue 'broadway_tutorial_error' in vhost '/' refused for user 'client'">>}},{gen_server,call,[<0.350.0>,{call,{'queue.declare',0,<<"broadway_tutorial_error">>,false,true,false,false,false,[]},none,<0.347.0>},60000]}} in context child_terminated
+15:54:12.770 [error] Supervisor 'Elixir.RabbitmqPublisher.Supervisor' had child 'Elixir.RabbitmqPublisher.Consumer' started with 'Elixir.RabbitmqPublisher.Consumer':start_link([]) at <0.347.0> exit with reason reached_max_restart_intensity in context shutdown
+15:54:12.770 [info] Application rabbitmq_publisher exited with reason: shutdown
+
+BREAK: (a)bort (A)bort with dump (c)ontinue (p)roc info (i)nfo
+       (l)oaded (v)ersion (k)ill (D)b-tables (d)istribution
+^C%                                                                                                                                                                                                                                                                           ?  rabbitmq_publisher git:(master) ? iex -S mix
+Erlang/OTP 23 [erts-11.0.4] [source] [64-bit] [smp:12:12] [ds:12:12:10] [async-threads:1] [hipe]
+
+15:55:37.382 [info] Application logger started on node nonode@nohost
+15:55:37.384 [info] Application gen_stage started on node nonode@nohost
+15:55:37.387 [info] Application xmerl started on node nonode@nohost
+15:55:37.396 [info] Application sasl started on node nonode@nohost
+15:55:37.399 [info] Application tools started on node nonode@nohost
+15:55:37.400 [info] Application jsx started on node nonode@nohost
+15:55:37.403 [info] Application ranch started on node nonode@nohost
+15:55:37.404 [info] Application recon started on node nonode@nohost
+15:55:37.425 [info] Application credentials_obfuscation started on node nonode@nohost
+15:55:37.425 [info] Application rabbit_common started on node nonode@nohost
+15:55:37.431 [info] Application amqp_client started on node nonode@nohost
+15:55:37.433 [info] Application amqp started on node nonode@nohost
+15:55:37.451 [info] Application rabbitmq_publisher started on node nonode@nohost
+Interactive Elixir (1.10.4) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)>
+15:55:37.491 [info]  [supervisor: {#PID<0.280.0>, :amqp_connection_sup}, started: [pid: #PID<0.281.0>, name: :connection_type_sup, mfargs: {:amqp_connection_type_sup, :start_link, []}, restart_type: :transient, shutdown: :infinity, child_type: :supervisor]]
+
+15:55:37.497 [info]  [supervisor: {#PID<0.280.0>, :amqp_connection_sup}, started: [pid: #PID<0.282.0>, name: :connection, mfargs: {:amqp_gen_connection, :start_link, [#PID<0.281.0>, {:amqp_params_network, "client", {:plaintext, "client"}, "/", 'bas-rpi4-161.local', 5672, 2047, 0, 10, 60000, :none, [#Function<9.127867893/3 in :amqp_uri.mechanisms/1>, #Function<9.127867893/3 in :amqp_uri.mechanisms/1>], [], []}]}, restart_type: :intrinsic, shutdown: :brutal_kill, child_type: :worker]]
+
+15:55:39.144 [info]  [supervisor: {#PID<0.281.0>, :amqp_connection_type_sup}, started: [pid: #PID<0.285.0>, name: :channel_sup_sup, mfargs: {:amqp_channel_sup_sup, :start_link, [:network, #PID<0.282.0>, "client 192.168.0.133:52275 -> 192.168.0.139:5672"]}, restart_type: :intrinsic, shutdown: :infinity, child_type: :supervisor]]
+
+15:55:39.146 [info]  [supervisor: {#PID<0.281.0>, :amqp_connection_type_sup}, started: [pid: #PID<0.286.0>, name: :channels_manager, mfargs: {:amqp_channels_manager, :start_link, [#PID<0.282.0>, "client 192.168.0.133:52275 -> 192.168.0.139:5672", #PID<0.285.0>]}, restart_type: :transient, shutdown: 30000, child_type: :worker]]
+
+15:55:39.153 [info]  [supervisor: {#PID<0.281.0>, :amqp_connection_type_sup}, started: [pid: #PID<0.287.0>, name: :writer, mfargs: {:rabbit_writer, :start_link, [#Port<0.6>, 0, 4096, :rabbit_framing_amqp_0_9_1, #PID<0.282.0>, "client 192.168.0.133:52275 -> 192.168.0.139:5672", false, 1000000000]}, restart_type: :transient, shutdown: 30000, child_type: :worker]]
+
+15:55:39.157 [info]  [supervisor: {#PID<0.281.0>, :amqp_connection_type_sup}, started: [pid: #PID<0.288.0>, name: :main_reader, mfargs: {:amqp_main_reader, :start_link, [#Port<0.6>, #PID<0.282.0>, #PID<0.286.0>, {:method, :rabbit_framing_amqp_0_9_1}, "client 192.168.0.133:52275 -> 192.168.0.139:5672"]}, restart_type: :transient, shutdown: 30000, child_type: :worker]]
+
+15:55:39.173 [info]  [supervisor: {#PID<0.281.0>, :amqp_connection_type_sup}, started: [pid: #PID<0.289.0>, name: :heartbeat_sender, mfargs: {:rabbit_heartbeat, :start_heartbeat_sender, [#Port<0.6>, 10, #Function<2.44129743/0 in :amqp_network_connection.start_heartbeat/1>, {:heartbeat_sender, "client 192.168.0.133:52275 -> 192.168.0.139:5672"}]}, restart_type: :transient, shutdown: 30000, child_type: :worker]]
+
+15:55:39.173 [info]  [supervisor: {#PID<0.281.0>, :amqp_connection_type_sup}, started: [pid: #PID<0.290.0>, name: :heartbeat_receiver, mfargs: {:rabbit_heartbeat, :start_heartbeat_receiver, [#Port<0.6>, 10, #Function<3.44129743/0 in :amqp_network_connection.start_heartbeat/1>, {:heartbeat_receiver, "client 192.168.0.133:52275 -> 192.168.0.139:5672"}]}, restart_type: :transient, shutdown: 30000, child_type: :worker]]
+
+15:55:39.187 [info]  [supervisor: {#PID<0.291.0>, :amqp_channel_sup}, started: [pid: #PID<0.292.0>, name: :gen_consumer, mfargs: {:amqp_gen_consumer, :start_link, [:amqp_selective_consumer, [], {"client 192.168.0.133:52275 -> 192.168.0.139:5672", 1}]}, restart_type: :intrinsic, shutdown: 30000, child_type: :worker]]
+
+15:55:39.189 [info]  [supervisor: {#PID<0.291.0>, :amqp_channel_sup}, started: [pid: #PID<0.293.0>, name: :channel, mfargs: {:amqp_channel, :start_link, [:network, #PID<0.282.0>, 1, #PID<0.292.0>, {"client 192.168.0.133:52275 -> 192.168.0.139:5672", 1}]}, restart_type: :intrinsic, shutdown: 30000, child_type: :worker]]
+
+15:55:39.189 [info]  [supervisor: {#PID<0.291.0>, :amqp_channel_sup}, started: [pid: #PID<0.294.0>, name: :writer, mfargs: {:rabbit_writer, :start_link, [#Port<0.6>, 1, 131072, :rabbit_framing_amqp_0_9_1, #PID<0.293.0>, {"client 192.168.0.133:52275 -> 192.168.0.139:5672", 1}, false, 1000000000]}, restart_type: :transient, shutdown: 30000, child_type: :worker]]
+
+15:55:39.221 [info]  handle_demand(1, :ok) called
+iex(1)> for i <- 1..10 , do: RabbitmqPublisher.Producer.enqueue("hello #{i}")
+received hello 1
+[:ok, :ok, :ok, :ok, :ok, :ok, :ok, :ok, :ok, :ok]
+iex(2)> finished hello 1
+received hello 2
+finished hello 2
+received hello 3
+finished hello 3
+received hello 4
+finished hello 4
+received hello 5
+finished hello 5
+received hello 6
+finished hello 6
+received hello 7
+finished hello 7
+received hello 8
+finished hello 8
+received hello 9
+finished hello 9
+received hello 10
+finished hello 10
+
+15:55:40.898 [info]  handle_demand(1, :ok) called
+iex(2)> for i <- 1..10 , do: RabbitmqPublisher.Producer.enqueue("hello #{i}")
+received hello 1
+finished hello 1
+received hello 2
+finished hello 2
+received hello 3
+finished hello 3
+received hello 4
+finished hello 4
+received hello 5
+finished hello 5
+[:ok, :ok, :ok, :ok, :ok, :ok, :ok, :ok, :ok, :ok]
+received hello 6
+finished hello 6
+iex(3)> received hello 7
+finished hello 7
+received hello 8
+finished hello 8
+received hello 9
+finished hello 9
+received hello 10
+finished hello 10
+
+15:55:44.731 [info]  handle_demand(1, :ok) called
+
+15:56:14.275 [warn]  Connection (#PID<0.282.0>) closing: received hard error {:"connection.close", 320, "CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'", 0, 0} from server
+
+15:56:14.275 [warning] Connection (<0.282.0>) closing: received hard error {'connection.close',320,<<"CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'">>,0,0} from server
+
+15:56:14.283 [error] GenServer RabbitmqPublisher.Consumer terminating
+** (stop) {:connection_lost, {:shutdown, {:connection_closing, {:server_initiated_close, 320, "CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'"}}}}
+Last message: {:DOWN, #Reference<0.3110566916.1363148806.244727>, :process, #PID<0.293.0>, {:shutdown, {:connection_closing, {:server_initiated_close, 320, "CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'"}}}}
+State: nil
+
+15:56:14.283 [error] GenServer RabbitmqPublisher.AMQP terminating
+** (stop) {:connection_lost, {:shutdown, {:server_initiated_close, 320, "CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'"}}}
+Last message: {:DOWN, #Reference<0.3110566916.1363148807.244866>, :process, #PID<0.282.0>, {:shutdown, {:server_initiated_close, 320, "CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'"}}}
+State: nil
+
+15:56:14.284 [info]  [supervisor: {#PID<0.299.0>, :amqp_connection_sup}, started: [pid: #PID<0.300.0>, name: :connection_type_sup, mfargs: {:amqp_connection_type_sup, :start_link, []}, restart_type: :transient, shutdown: :infinity, child_type: :supervisor]]
+
+15:56:14.285 [info]  [supervisor: {#PID<0.299.0>, :amqp_connection_sup}, started: [pid: #PID<0.301.0>, name: :connection, mfargs: {:amqp_gen_connection, :start_link, [#PID<0.300.0>, {:amqp_params_network, "client", {:plaintext, "client"}, "/", 'bas-rpi4-161.local', 5672, 2047, 0, 10, 60000, :none, [#Function<9.127867893/3 in :amqp_uri.mechanisms/1>, #Function<9.127867893/3 in :amqp_uri.mechanisms/1>], [], []}]}, restart_type: :intrinsic, shutdown: :brutal_kill, child_type: :worker]]
+
+15:56:14.287 [error] GenServer RabbitmqPublisher.Consumer terminating
+** (stop) exited in: GenServer.call(RabbitmqPublisher.AMQP, :get, 5000)
+    ** (EXIT) no process: the process is not alive or there's no process currently associated with the given name, possibly because its application isn't started
+    (elixir 1.10.4) lib/gen_server.ex:1013: GenServer.call/3
+    (rabbitmq_publisher 0.1.0) lib/rabbitmq_publisher/ampq.ex:19: RabbitmqPublisher.AMQP.get_connection/0
+    (rabbitmq_publisher 0.1.0) lib/rabbitmq_publisher/consumer.ex:23: RabbitmqPublisher.Consumer.handle_info/2
+    (gen_stage 1.0.0) lib/gen_stage.ex:2086: GenStage.noreply_callback/3
+    (stdlib 3.13.1) gen_server.erl:680: :gen_server.try_dispatch/4
+    (stdlib 3.13.1) gen_server.erl:756: :gen_server.handle_msg/6
+    (stdlib 3.13.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+Last message: :connect
+State: nil
+
+15:56:14.290 [error] Failed to connect amqp://client:client@bas-rpi4-161.local. Reconnecting later...
+
+15:56:14.291 [error] Failed to connect broadway_tutorial: {:error, :not_connected}. Reconnecting later...
+15:56:14.282 [error] Supervisor {<0.285.0>,amqp_channel_sup_sup} had child channel_sup started with amqp_channel_sup:start_link(network, <0.282.0>, <<"client 192.168.0.133:52275 -> 192.168.0.139:5672">>) at undefined exit with reason shutdown in context shutdown_error
+15:56:14.284 [error] gen_server 'Elixir.RabbitmqPublisher.Consumer' terminated with reason: {connection_lost,{shutdown,{connection_closing,{server_initiated_close,320,<<"CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'">>}}}}
+15:56:14.284 [error] gen_server 'Elixir.RabbitmqPublisher.AMQP' terminated with reason: {connection_lost,{shutdown,{server_initiated_close,320,<<"CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'">>}}}
+15:56:14.284 [error] CRASH REPORT Process 'Elixir.RabbitmqPublisher.Consumer' with 0 neighbours exited with reason: {connection_lost,{shutdown,{connection_closing,{server_initiated_close,320,<<"CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'">>}}}} in gen_server:handle_common_reply/8 line 796
+15:56:14.284 [error] CRASH REPORT Process 'Elixir.RabbitmqPublisher.AMQP' with 0 neighbours exited with reason: {connection_lost,{shutdown,{server_initiated_close,320,<<"CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'">>}}} in gen_server:handle_common_reply/8 line 796
+15:56:14.284 [error] Supervisor 'Elixir.RabbitmqPublisher.Supervisor' had child 'Elixir.RabbitmqPublisher.Consumer' started with 'Elixir.RabbitmqPublisher.Consumer':start_link([]) at <0.276.0> exit with reason {connection_lost,{shutdown,{connection_closing,{server_initiated_close,320,<<"CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'">>}}}} in context child_terminated
+15:56:14.285 [error] Supervisor 'Elixir.RabbitmqPublisher.Supervisor' had child 'Elixir.RabbitmqPublisher.AMQP' started with 'Elixir.RabbitmqPublisher.AMQP':start_link([]) at <0.274.0> exit with reason {connection_lost,{shutdown,{server_initiated_close,320,<<"CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'">>}}} in context child_terminated
+15:56:14.288 [error] gen_server 'Elixir.RabbitmqPublisher.Consumer' terminated with reason: no such process or port in call to 'Elixir.GenServer':call('Elixir.RabbitmqPublisher.AMQP', get, 5000) in 'Elixir.GenServer':call/3 line 1013
+15:56:14.288 [error] CRASH REPORT Process 'Elixir.RabbitmqPublisher.Consumer' with 0 neighbours exited with reason: no such process or port in call to 'Elixir.GenServer':call('Elixir.RabbitmqPublisher.AMQP', get, 5000) in 'Elixir.GenServer':call/3 line 1013
+15:56:14.288 [error] Supervisor 'Elixir.RabbitmqPublisher.Supervisor' had child 'Elixir.RabbitmqPublisher.Consumer' started with 'Elixir.RabbitmqPublisher.Consumer':start_link([]) at <0.297.0> exit with reason no such process or port in call to 'Elixir.GenServer':call('Elixir.RabbitmqPublisher.AMQP', get, 5000) in context child_terminated
+
+15:56:24.293 [info]  [supervisor: {#PID<0.303.0>, :amqp_connection_sup}, started: [pid: #PID<0.304.0>, name: :connection_type_sup, mfargs: {:amqp_connection_type_sup, :start_link, []}, restart_type: :transient, shutdown: :infinity, child_type: :supervisor]]
+
+15:56:24.293 [info]  [supervisor: {#PID<0.303.0>, :amqp_connection_sup}, started: [pid: #PID<0.305.0>, name: :connection, mfargs: {:amqp_gen_connection, :start_link, [#PID<0.304.0>, {:amqp_params_network, "client", {:plaintext, "client"}, "/", 'bas-rpi4-161.local', 5672, 2047, 0, 10, 60000, :none, [#Function<9.127867893/3 in :amqp_uri.mechanisms/1>, #Function<9.127867893/3 in :amqp_uri.mechanisms/1>], [], []}]}, restart_type: :intrinsic, shutdown: :brutal_kill, child_type: :worker]]
+
+15:56:24.595 [error] Failed to connect amqp://client:client@bas-rpi4-161.local. Reconnecting later...
+
+15:56:24.596 [error] Failed to connect broadway_tutorial: {:error, :not_connected}. Reconnecting later...
+
+15:56:34.597 [error] Failed to connect broadway_tutorial: {:error, :not_connected}. Reconnecting later...
+
+15:56:34.598 [info]  [supervisor: {#PID<0.306.0>, :amqp_connection_sup}, started: [pid: #PID<0.307.0>, name: :connection_type_sup, mfargs: {:amqp_connection_type_sup, :start_link, []}, restart_type: :transient, shutdown: :infinity, child_type: :supervisor]]
+
+15:56:34.598 [info]  [supervisor: {#PID<0.306.0>, :amqp_connection_sup}, started: [pid: #PID<0.308.0>, name: :connection, mfargs: {:amqp_gen_connection, :start_link, [#PID<0.307.0>, {:amqp_params_network, "client", {:plaintext, "client"}, "/", 'bas-rpi4-161.local', 5672, 2047, 0, 10, 60000, :none, [#Function<9.127867893/3 in :amqp_uri.mechanisms/1>, #Function<9.127867893/3 in :amqp_uri.mechanisms/1>], [], []}]}, restart_type: :intrinsic, shutdown: :brutal_kill, child_type: :worker]]
+
+15:56:34.733 [error] Failed to connect amqp://client:client@bas-rpi4-161.local. Reconnecting later...
+
+15:56:44.598 [error] Failed to connect broadway_tutorial: {:error, :not_connected}. Reconnecting later...
+
+15:56:44.736 [info]  [supervisor: {#PID<0.309.0>, :amqp_connection_sup}, started: [pid: #PID<0.310.0>, name: :connection_type_sup, mfargs: {:amqp_connection_type_sup, :start_link, []}, restart_type: :transient, shutdown: :infinity, child_type: :supervisor]]
+
+15:56:44.736 [info]  [supervisor: {#PID<0.309.0>, :amqp_connection_sup}, started: [pid: #PID<0.311.0>, name: :connection, mfargs: {:amqp_gen_connection, :start_link, [#PID<0.310.0>, {:amqp_params_network, "client", {:plaintext, "client"}, "/", 'bas-rpi4-161.local', 5672, 2047, 0, 10, 60000, :none, [#Function<9.127867893/3 in :amqp_uri.mechanisms/1>, #Function<9.127867893/3 in :amqp_uri.mechanisms/1>], [], []}]}, restart_type: :intrinsic, shutdown: :brutal_kill, child_type: :worker]]
+
+15:56:44.871 [error] Failed to connect amqp://client:client@bas-rpi4-161.local. Reconnecting later...
+
+15:56:54.599 [error] Failed to connect broadway_tutorial: {:error, :not_connected}. Reconnecting later...
+
+15:56:54.872 [info]  [supervisor: {#PID<0.312.0>, :amqp_connection_sup}, started: [pid: #PID<0.313.0>, name: :connection_type_sup, mfargs: {:amqp_connection_type_sup, :start_link, []}, restart_type: :transient, shutdown: :infinity, child_type: :supervisor]]
+
+15:56:54.872 [info]  [supervisor: {#PID<0.312.0>, :amqp_connection_sup}, started: [pid: #PID<0.314.0>, name: :connection, mfargs: {:amqp_gen_connection, :start_link, [#PID<0.313.0>, {:amqp_params_network, "client", {:plaintext, "client"}, "/", 'bas-rpi4-161.local', 5672, 2047, 0, 10, 60000, :none, [#Function<9.127867893/3 in :amqp_uri.mechanisms/1>, #Function<9.127867893/3 in :amqp_uri.mechanisms/1>], [], []}]}, restart_type: :intrinsic, shutdown: :brutal_kill, child_type: :worker]]
